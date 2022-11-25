@@ -1,12 +1,13 @@
 <template>
     <input
         type="radio"
-        v-model="event.pets"
+
         :value="value"
         :checked ="modelValue === value"
         @change ="$emit('update: modelValue', value)"
         v-bind ="$attrs"
     />
+    <label> {{label}} </label>
 </template>
 <script>
     export default {
