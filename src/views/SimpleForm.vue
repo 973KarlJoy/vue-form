@@ -30,18 +30,9 @@
       />
       <h3>Are pets allowed?</h3>
       <div>
-        <BaseRadio
+        <BaseRadioGroup 
           v-model ="event.pets"
-          :value ="1"
-          label ="Yes"
-          name ="pets"
-        />
-      </div>
-      <div>
-        <BaseRadio
-          v-model ="event.pets"
-          :value ="0"
-          label ="No"
+          :options ="petOptions"
           name ="pets"
         />
 
@@ -65,7 +56,7 @@
         {{event.extras}}
       </div>
 
-      
+
       <button class="button -fill-gradient" type="submit">Submit</button>
     </form>
   </div>
@@ -74,10 +65,10 @@
 <script>
 import BaseCheckbox from '@/components/BaseCheckbox.vue';
 import BaseInput from '@/components/BaseInput.vue';
-import BaseRadio from '@/components/BaseRadio.vue';
+import BaseRadioGroup from '@/components/BaseRadioGroup.vue';
 import BaseSelect from '@/components/BaseSelect.vue';
 export default {
-  components :{ BaseInput, BaseSelect, BaseCheckbox, BaseRadio },
+  components :{ BaseInput, BaseSelect, BaseCheckbox, BaseRadioGroup },
   data () {
 
     return {
@@ -100,7 +91,9 @@ export default {
           catering: false,
           music: false
         }
-      }
+      },
+      petOptions : [{ label : "Yes", value : 1},
+      {label : "No", value : 0}]
     }
   }
 }
