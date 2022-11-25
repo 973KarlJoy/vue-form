@@ -2,12 +2,16 @@
  <label v-if="label"> {{label}}  </label>
  <select
     class ="field"
-    :value ="modelValue">
+    :value ="modelValue"
+    v-bind="{
+        ...$attrs, onChange: 
+        ($event)=> { $emit('update:modelValue', $event.target.value)}
+    }">
     <option 
-    v-for="option in categories"
+    v-for="option in options"
     :value="option"
     :key ="option"
-    :selected="option===event.category">{{option}}</option>
+    :selected="option===modelValue">{{option}}</option>
 </select>
 </template>
 <script>
@@ -20,7 +24,11 @@
             modelValue : {
                 default : "",
                 type : [Number, String]
-            }
+            },
+            options: {
+                type : Array,
+                required : true,  
+            }    
         }
 
 }
